@@ -93,13 +93,12 @@
   - Signal is included in the sensitivity list but no elements are used
   
 ### **Lint using Spyglass**
-- ```c
+```c
 	#include <stdio.h>
 	void main(){
 		printf("Hello, World");
 	}
 ```
-
 ## **7. Clock Domain Crossing (CDC) Analysis**
 - Identify signals crossing different clock domains.
 - Ensure proper synchronization using **FIFO, handshaking, or synchronizers**.
