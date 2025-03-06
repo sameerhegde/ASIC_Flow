@@ -76,7 +76,7 @@
   - Real variables are not synthesizable
   - Case equality and inequality (`===`, `!==`) are not synthesizable
   - `Initial` is not synthesizable
-  - `While/repeat` without proper conditions are not synthesizable
+  - `while/repeat/for` without proper conditions are not synthesizable
 
 - **Expression Rules** 
   - `X`, `Z`, and `?` (don't care) may lead to synthesis and simulation mismatch
