@@ -107,7 +107,8 @@
 	- **3. Waiver Files (Optional)**
 			- Used to waive specific rules or known violations.
 			
-- ** Using SpyGlass**
+- **Using SpyGlass**
+	**2 types**
 	- **GUI mode**
 		```bash
 		csh
@@ -120,7 +121,7 @@
 		source /synopsis/source/file/source.sh
 		spyglass -project fileName.prj -batch -goal lint/goal_name 
 		```
-		-example for prj
+		**example for prj**
 		```tcl
 		#!SPYGLASS_PROJECT_FILE
 
