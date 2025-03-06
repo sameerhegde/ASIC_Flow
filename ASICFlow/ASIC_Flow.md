@@ -91,6 +91,14 @@
 - **Combinational Loops** 
   - Signal is read inside a combinational block but not mentioned in the sensitivity list
   - Signal is included in the sensitivity list but no elements are used
+  
+### **Lint using Spyglass**
+- ```c
+	#include <stdio.h>
+	void main(){
+		printf("Hello, World");
+	}
+```
 
 ## **7. Clock Domain Crossing (CDC) Analysis**
 - Identify signals crossing different clock domains.
