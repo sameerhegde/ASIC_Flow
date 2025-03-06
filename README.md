@@ -27,12 +27,12 @@
 
 ## **6. Lint (Static Code Check)**
 
-### **. Introduction**
+### ** Introduction**
 - **Linting** is a **static code analysis** technique used to check RTL (Verilog/VHDL) for errors before synthesis.
 - It detects **syntax, semantic, and design rule violations** to ensure clean and synthesizable RTL.
 - Linting improves **code quality, maintainability,Poratability and verification efficiency**.
 
-- **Rules in Lint**
+### **Rules in Lint**
 	- Array Rules
 		- out of index
 		- all elements of array are not read
