@@ -30,56 +30,67 @@
 ### **Introduction**
 - **Linting** is a **static code analysis** technique used to check RTL (Verilog/VHDL) for errors before synthesis.
 - It detects **syntax, semantic, and design rule violations** to ensure clean and synthesizable RTL.
-- Linting improves **code quality, maintainability,Poratability and verification efficiency**.
+- Linting improves **code quality, maintainability, portability, and verification efficiency**.
 
 ### **Rules in Lint**
-- Array Rules
-	- out of index
-	- all elements of array are not read
-	- all elements of array are not set
-- Case rules 
-	- missing default 
-	- not all cases are specified
-	- **leads to latch inference**
-- Lint Reset rules 
-	- both edges are used within same design unit
-	- Synchronous and Asynchronous reset conflict 
-- Lint clock rules 
-	- reports if both edges of clock are used in same module
-- Usage rules
-	- All elements of memory are not used
-	- Unused variables 
-	- Macros/parameter defined but not used
-	- **Output is never set**
-- Assign rules 
-	- **Truncation of extra bits**
-	- Blocking should not be used in sequential blocks
-	- Non blocking assignment in combinational block
-- Function Task rules 
-	- Function Task decleared but not used
-	- Recurssion is not used 
-	- task which contains event controlled are not synthesizable
-- Instance Rules
-	- port width mismatch
-	- Mixing of By name and By order is not allowed 
-	- Inputs are not driven or not connected
-	- Synthesis Rules
-	- Wait and Time declearation
-	- Real variables are not synthesizable
-	- case equality and not equality (===) (!==) are not synthesizable
-	- `Inital` is not synthesizable
-	- `While/repeat` without proper conditions are not synthesizable
-- Expression rules 
-	- `X Z and ?` (dont care) may lead to Synthesis and simulation mismatch
-- Multiple Drivers
-	- Signal has multiple drivers 
-	- Diffrent bits of same bus are driven by multiple block
-- Event Rules
-	- Mixing combinational and sequential style in a block
-	
-- **combinational Loops** 
-- Signal is read inside a combinational block but not mentioned in sensitivity list
-- signal in included in sensitivity list but not elements are used
+- **Array Rules**
+  - Out of index
+  - All elements of array are not read
+  - All elements of array are not set
+
+- **Case Rules** 
+  - Missing default 
+  - Not all cases are specified
+  - **Leads to latch inference**
+
+- **Lint Reset Rules** 
+  - Both edges are used within the same design unit
+  - Synchronous and asynchronous reset conflict 
+
+- **Lint Clock Rules** 
+  - Reports if both edges of clock are used in the same module
+
+- **Usage Rules**
+  - All elements of memory are not used
+  - Unused variables 
+  - Macros/parameters defined but not used
+  - **Output is never set**
+
+- **Assign Rules** 
+  - **Truncation of extra bits**
+  - Blocking should not be used in sequential blocks
+  - Non-blocking assignment in combinational block
+
+- **Function Task Rules** 
+  - Function/Task declared but not used
+  - Recursion is not used 
+  - Task which contains event control is not synthesizable
+
+- **Instance Rules**
+  - Port width mismatch
+  - Mixing of By-name and By-order is not allowed 
+  - Inputs are not driven or not connected
+
+- **Synthesis Rules**
+  - `Wait` and `Time` declaration
+  - Real variables are not synthesizable
+  - Case equality and inequality (`===`, `!==`) are not synthesizable
+  - `Initial` is not synthesizable
+  - `While/repeat` without proper conditions are not synthesizable
+
+- **Expression Rules** 
+  - `X`, `Z`, and `?` (don't care) may lead to synthesis and simulation mismatch
+
+- **Multiple Drivers**
+  - Signal has multiple drivers 
+  - Different bits of the same bus are driven by multiple blocks
+
+- **Event Rules**
+  - Mixing combinational and sequential styles in a block
+
+- **Combinational Loops** 
+  - Signal is read inside a combinational block but not mentioned in the sensitivity list
+  - Signal is included in the sensitivity list but no elements are used
 
 ## **7. Clock Domain Crossing (CDC) Analysis**
 - Identify signals crossing different clock domains.
@@ -100,4 +111,3 @@
 - Perform **timing verification** using tools like **PrimeTime**.
 - Identify and fix **setup, hold, and clock skew violations**.
 - Ensure **multi-corner and multi-mode timing closure**.
-
