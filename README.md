@@ -26,7 +26,12 @@
 - Ensure high **fault coverage** for manufacturing testing.
 
 ## **6. Lint (Static Code Check)**
-- Run linting tools (e.g., SpyGlass) to detect coding issues.
+
+### **. Introduction**
+- **Linting** is a **static code analysis** technique used to check RTL (Verilog/VHDL) for errors before synthesis.
+- It detects **syntax, semantic, and design rule violations** to ensure clean and synthesizable RTL.
+- Linting improves **code quality, maintainability,Poratability and verification efficiency**.
+
 - **Rules in Lint**
 	- Array Rules
 		- out of index
@@ -64,7 +69,17 @@
 		- case equality and not equality (===) (!==) are not synthesizable
 		- `Inital` is not synthesizable
 		- `While/repeat` without proper conditions are not synthesizable
-- Ensure compliance with **coding guidelines**.
+	- Expression rules 
+		- `X Z and ?` (dont care) may lead to Synthesis and simulation mismatch
+	- Multiple Drivers
+		- Signal has multiple drivers 
+		- Diffrent bits of same bus are driven by multiple block
+	- Event Rules
+		- Mixing combinational and sequential style in a block
+	
+	- **combinational Loops** 
+	- Signal is read inside a combinational block but not mentioned in sensitivity list
+	- signal in included in sensitivity list but not elements are used
 
 ## **7. Clock Domain Crossing (CDC) Analysis**
 - Identify signals crossing different clock domains.
