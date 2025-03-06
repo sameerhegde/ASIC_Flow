@@ -93,12 +93,59 @@
   - Signal is included in the sensitivity list but no elements are used
   
 ### **Lint using Spyglass**
-```c
-	#include <stdio.h>
-	void main(){
-		printf("Hello, World");
-	}
-```
+- **Inputs for Lint in SpyGlass**
+
+	- **1. RTL Source Files**
+		- **Verilog / SystemVerilog / VHDL files**  
+		- Example: `top.v`, `design.vhd`
+
+	- **2. Configuration Files**
+		- **SpyGlass Rule Configuration (`.prj` file)**
+		- SpyGlass Project File (`spyglass.prj`)
+			- Contains paths, settings, and rule configurations.
+
+	- **3. Waiver Files (Optional)**
+			- Used to waive specific rules or known violations.
+			
+- ** Using SpyGlass**
+	- **GUI mode**
+		```bash
+		csh
+		source /synopsis/source/file/source.sh
+		spyglass &
+		```
+	- **Batch mode**
+		```bash
+		csh
+		source /synopsis/source/file/source.sh
+		spyglass -project fileName.prj -batch -goal lint/goal_name 
+		```
+		-example for prj
+		```tcl
+		#!SPYGLASS_PROJECT_FILE
+
+		## Data Import Section
+		read_file -type verilog top_cpu.v
+		read_file -type verilog program_counter.v
+
+		## Common Options Section
+		set_option projectwdir .
+		set_option language_mode mixed
+		set_option designread_enable_synthesis no
+		set_option designread_disable_flatten no
+		set_option top top_cpu
+		set_option mthresh 800000
+		set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+		## Goal Setup Section
+		current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+		set_parameter handle_large_bus yes
+		current_goal lint/lint_rtl -top cpu_lite
+
+		## wavier file
+		read_file -type awl projrct/directory/cpu_lite_proiect/lint_1/program_memory_W123_read_not_set.awl
+		```		
+
 ## **7. Clock Domain Crossing (CDC) Analysis**
 - Identify signals crossing different clock domains.
 - Ensure proper synchronization using **FIFO, handshaking, or synchronizers**.
